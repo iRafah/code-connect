@@ -5,12 +5,30 @@ import { Login } from './pages/Login/index.jsx'
 import { Register } from './pages/Register/index.jsx'
 import { Feed } from './pages/Feed/index.jsx'
 import { BlogPost } from './pages/BlogPost/index.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router'
+import { ProtectedRoute } from './components/ProtectedRoute/index.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Login />
-    {/* <Register /> */}
-    {/* <Feed /> */}
-    {/* <BlogPost /> */}
-  </StrictMode>,
+  <BrowserRouter>
+    <StrictMode>
+      <Routes>
+        <Route path='/auth'>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+        <Route path='/'>
+          <Route path="" element={
+            <ProtectedRoute>
+              <Feed />
+            </ProtectedRoute>
+          } />
+          <Route path="blog-post" element={
+            <ProtectedRoute>
+              <BlogPost />
+            </ProtectedRoute>
+          } />
+        </Route>
+      </Routes>
+    </StrictMode>
+  </BrowserRouter>
 )
