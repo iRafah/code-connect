@@ -2,8 +2,7 @@ import { AppLayout } from "../../layouts/App"
 import { posts } from "../Feed/data"
 import styles from './blogpost.module.css'
 import { ThumbsUpButton } from "../../components/CardPost/ThumbsUpButton"
-import { IconButton } from "../../components/IconButton"
-import { IconChat } from "../../components/icons/IconChat"
+import { ModalComment } from "../../components/ModalComment"
 import { Author } from "../../components/Author"
 import Typography from "../../components/Typography"
 import { CommentList } from "../../components/CommentList"
@@ -37,9 +36,7 @@ export const BlogPost = () => {
                                 </p>
                             </div>
                             <div className={styles.action}>
-                                <IconButton>
-                                    <IconChat />
-                                </IconButton>
+                                <ModalComment />
                                 <p>
                                     {post.comments.length}
                                 </p>

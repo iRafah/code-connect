@@ -6,7 +6,6 @@ import { Register } from './pages/Register/index.jsx'
 import { Feed } from './pages/Feed/index.jsx'
 import { BlogPost } from './pages/BlogPost/index.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router'
-import { ProtectedRoute } from './components/ProtectedRoute/index.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -18,14 +17,10 @@ createRoot(document.getElementById('root')).render(
         </Route>
         <Route path='/'>
           <Route path="" element={
-            <ProtectedRoute>
-              <Feed />
-            </ProtectedRoute>
+            <Feed />
           } />
           <Route path="blog-post" element={
-            <ProtectedRoute>
-              <BlogPost />
-            </ProtectedRoute>
+            <BlogPost />
           } />
         </Route>
       </Routes>
